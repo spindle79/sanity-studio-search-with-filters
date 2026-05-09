@@ -155,7 +155,7 @@ export function DocumentTypesButton({
         >
           <Flex direction="column" style={{height: '100%'}}>
             {/* Header with search input */}
-            <Box flexShrink={0}>
+            <Box style={{flexShrink: 0}}>
               <Card borderBottom>
                 <Flex align="center" flex={1} padding={1}>
                   <TextInput
@@ -273,7 +273,7 @@ export function DocumentTypesButton({
 
             {/* Clear button footer */}
             {types.length > 0 && !titleFilter && (
-              <Box flexShrink={0}>
+              <Box style={{flexShrink: 0}}>
                 <Card borderTop>
                   <Flex padding={1}>
                     <Button
@@ -300,7 +300,7 @@ export function DocumentTypesButton({
         iconRight={ChevronDownIcon}
         mode="ghost"
         onClick={handleOpen}
-        size={fullscreen ? 'large' : 'default'}
+        size={fullscreen ? 3 : 2}
         ref={setButtonElement}
         selected={open}
         text={title}

@@ -6,6 +6,9 @@ import FocusLock from 'react-focus-lock'
 import styled from 'styled-components'
 import {OperatorsMenuButton} from './OperatorsMenuButton'
 import {FilterInput} from './FilterInput'
+import type {Filter} from './filter-types'
+
+export type {Filter} from './filter-types'
 
 const FormCard = styled(Card)`
   display: flex;
@@ -15,27 +18,6 @@ const FormCard = styled(Card)`
   width: 100%;
   z-index: 1000;
 `
-
-export interface Filter {
-  id: string
-  field: string
-  operator: string
-  value:
-    | string
-    | string[]
-    | number
-    | {from?: number | string | null; to?: number | string | null}
-    | {unit: string; value: number}
-    | null
-  label: string
-  isValid?: boolean
-  filterName?: string
-  operatorType?: string
-  fieldPath?: string
-  title?: string
-  description?: string
-  icon?: React.ComponentType
-}
 
 export interface FilterFormProps {
   filter: Filter

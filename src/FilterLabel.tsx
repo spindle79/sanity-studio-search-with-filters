@@ -1,20 +1,13 @@
 import * as React from 'react'
 import {Box, Flex, Text} from '@sanity/ui'
 import styled from 'styled-components'
+import type {Filter} from './filter-types'
+
+export type {Filter} from './filter-types'
 
 const CustomBox = styled(Box)<{$flexShrink?: number}>`
   flex-shrink: ${({$flexShrink = 0}) => $flexShrink};
 `
-
-export interface Filter {
-  id: string
-  field: string
-  operator: string
-  value: string | string[] | number | {from?: number; to?: number} | null
-  label: string
-  isValid?: boolean
-  title?: string
-}
 
 export interface FilterLabelProps {
   filter: Filter

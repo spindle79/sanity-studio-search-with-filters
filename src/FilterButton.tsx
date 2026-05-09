@@ -6,8 +6,11 @@ import {Button} from '@sanity/ui'
 import styled from 'styled-components'
 import {rem} from '@sanity/ui'
 import {useClickOutsideEvent} from './useClickOutsideEvent'
-import {FilterForm, type Filter as FilterFormType} from './FilterForm'
+import {FilterForm} from './FilterForm'
 import {FilterLabel} from './FilterLabel'
+import type {Filter} from './filter-types'
+
+export type {Filter} from './filter-types'
 
 const ContainerDiv = styled.div`
   align-items: center;
@@ -29,27 +32,6 @@ const CloseCard = styled(Card)`
 const CloseButton = styled(Button)`
   border-radius: 0 ${rem(2)} ${rem(2)} 0;
 `
-
-export interface Filter {
-  id: string
-  field: string
-  operator: string
-  value:
-    | string
-    | string[]
-    | number
-    | {from?: number | string | null; to?: number | string | null}
-    | {unit: string; value: number}
-    | null
-  label: string
-  isValid?: boolean
-  filterName?: string
-  operatorType?: string
-  fieldPath?: string
-  title?: string
-  description?: string
-  icon?: React.ComponentType
-}
 
 export interface FilterButtonProps {
   filter: Filter
@@ -107,7 +89,7 @@ export function FilterButton({
 
   const isValid = filter.isValid !== false
 
-  const handleFilterChange = (updatedFilter: FilterFormType) => {
+  const handleFilterChange = (updatedFilter: Filter) => {
     onFilterChange?.(updatedFilter)
   }
 

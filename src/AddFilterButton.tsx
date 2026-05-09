@@ -112,26 +112,28 @@ export function AddFilterButton({
         >
           <Flex direction="column" style={{height: '100%'}}>
             {/* Header with search input */}
-            <Box borderBottom flexShrink={0}>
-              <Flex align="center" flex={1} padding={1}>
-                <TextInput
-                  __unstable_disableFocusRing
-                  aria-label="Filter by title"
-                  autoComplete="off"
-                  border={false}
-                  clearButton={!!titleFilter}
-                  fontSize={fullscreen ? 2 : 1}
-                  icon={SearchIcon}
-                  muted
-                  onChange={(e) => setTitleFilter(e.currentTarget.value)}
-                  onClear={handleFilterClear}
-                  placeholder="Filter..."
-                  radius={2}
-                  ref={setInputElement}
-                  spellCheck={false}
-                  value={titleFilter}
-                />
-              </Flex>
+            <Box style={{flexShrink: 0}}>
+              <Card borderBottom>
+                <Flex align="center" flex={1} padding={1}>
+                  <TextInput
+                    __unstable_disableFocusRing
+                    aria-label="Filter by title"
+                    autoComplete="off"
+                    border={false}
+                    clearButton={!!titleFilter}
+                    fontSize={fullscreen ? 2 : 1}
+                    icon={SearchIcon}
+                    muted
+                    onChange={(e) => setTitleFilter(e.currentTarget.value)}
+                    onClear={handleFilterClear}
+                    placeholder="Filter..."
+                    radius={2}
+                    ref={setInputElement}
+                    spellCheck={false}
+                    value={titleFilter}
+                  />
+                </Flex>
+              </Card>
             </Box>
 
             {/* Scrollable list */}
@@ -272,7 +274,7 @@ export function AddFilterButton({
       <Button
         mode="ghost"
         onClick={handleOpen}
-        size={fullscreen ? 'large' : 'default'}
+        size={fullscreen ? 3 : 2}
         ref={setButtonElement}
         selected={open}
         text="Add filter"

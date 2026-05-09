@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {Box, Flex, TextInput, Select} from '@sanity/ui'
-import type {Filter} from './FilterForm'
+import type {Filter} from './filter-types'
 
 export interface FilterInputProps {
   filter: Filter
@@ -40,8 +40,8 @@ export function FilterInput({filter, value, onChange, fullscreen = false}: Filte
       return (
         <NumberRangeInput
           value={
-            typeof value === 'object' && 'from' in value && 'to' in value
-              ? value
+            value !== null && typeof value === 'object' && 'from' in value && 'to' in value
+              ? (value as {from: number | null; to: number | null})
               : {from: null, to: null}
           }
           onChange={onChange}
@@ -333,7 +333,7 @@ function DateTimeInput({
       <DateTimeRangeInput
         value={
           value !== null && typeof value === 'object' && 'from' in value && 'to' in value
-            ? value
+            ? (value as {from: string | null; to: string | null})
             : {from: null, to: null}
         }
         onChange={onChange}

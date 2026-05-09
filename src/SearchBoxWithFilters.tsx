@@ -7,6 +7,9 @@ import {FilterButton} from './FilterButton'
 import {DocumentTypesButton} from './DocumentTypesButton'
 import {AddFilterButton, type FilterOption} from './AddFilterButton'
 import {getFilterOperators} from './filterDefinitions'
+import type {Filter} from './filter-types'
+
+export type {Filter} from './filter-types'
 
 const rotate = keyframes`
   from { transform: rotate(0deg); }
@@ -27,7 +30,10 @@ const CustomTextInputBox = styled(Box)<{$background?: boolean; $smallClearButton
 
   input + span {
     background: ${({theme, $background}) =>
-      $background ? theme.sanity.color.card.disabled.bg2 : 'transparent'};
+      $background
+        ? (theme as {sanity: {color: {card: {disabled: {bg2: string}}}}}).sanity.color.card
+            .disabled.bg2
+        : 'transparent'};
   }
 
   [data-qa='clear-button'] {
@@ -40,15 +46,6 @@ const CustomTextInputBox = styled(Box)<{$background?: boolean; $smallClearButton
     }
   }
 `
-
-export interface Filter {
-  id: string
-  field: string
-  operator: string
-  value: string | string[]
-  label: string
-  isValid?: boolean
-}
 
 export interface SearchBoxWithFiltersProps {
   /**
@@ -215,7 +212,7 @@ export function SearchBoxWithFilters({
                 mode="bleed"
                 onClick={onFiltersToggle}
                 selected={shouldShowFilters}
-                size="large"
+                size={3}
                 tone={notificationBadgeVisible ? 'primary' : undefined}
               />
             </FilterDiv>
@@ -290,7 +287,7 @@ export function SearchBoxWithFilters({
                     <Button
                       mode="bleed"
                       onClick={onClearFilters}
-                      size="large"
+                      size={3}
                       text="Clear filters"
                       tone="critical"
                     />
