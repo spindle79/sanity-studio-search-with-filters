@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.pnpm-store/
+*.tsbuildinfo
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.log
+.env
+.env.local
+.claude/settings.local.json
