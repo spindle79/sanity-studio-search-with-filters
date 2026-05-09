@@ -30,10 +30,7 @@ const CustomTextInputBox = styled(Box)<{$background?: boolean; $smallClearButton
 
   input + span {
     background: ${({theme, $background}) =>
-      $background
-        ? (theme as {sanity: {color: {card: {disabled: {bg2: string}}}}}).sanity.color.card
-            .disabled.bg2
-        : 'transparent'};
+      $background ? theme.sanity.color.card.disabled.bg2 : 'transparent'};
   }
 
   [data-qa='clear-button'] {
